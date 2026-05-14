@@ -1,0 +1,104 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #111;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ─────────────────────────────────────
+   SCENE & WORLD
+───────────────────────────────────── */
+.scene {
+  perspective: 900px;
+  perspective-origin: 50% 40%;
+}
+
+.world {
+  transform-style: preserve-3d;
+  transform: rotateX(-20deg) rotateY(-40deg);
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+/* ─────────────────────────────────────
+   PIECE — barre allongée sur Z
+   x=20  y=5  z=400
+───────────────────────────────────── */
+.piece {
+  position: absolute;
+  width:  20px;
+  height:  5px;
+  transform-style: preserve-3d;
+}
+
+.piece-face {
+  position: absolute;
+}
+
+.pf-front {
+  width: 20px; height: 5px;
+  background: rgba(80, 130, 255, 1);
+}
+
+.pf-top {
+  width: 20px; height: 600px;
+  transform-origin: 0 0 0;
+  transform: rotateX(-90deg);
+  background: rgba(100, 160, 255, 1);
+  border-top: 1px solid rgba(140, 190, 255, 0.8);
+}
+
+.pf-right {
+  width: 600px; height: 5px;
+  left: 20px;
+  transform-origin: 0 0 0;
+  transform: rotateY(90deg);
+  background: rgba(60, 100, 200, 1);
+}
+
+/* ─────────────────────────────────────
+   FACE — cadre 128 × 128 dans le plan XY
+   posé sur la barre : bas du cadre = Y=0
+───────────────────────────────────── */
+.face {
+  position: absolute;
+  width:  128px;
+  height: 128px;
+  left: -54px;
+  top:  -128px;
+  border: 2px solid rgba(255, 200, 80, 0.85);
+  background: rgba(255, 200, 80, 0.07);
+}
+
+#btn-play {
+  position: fixed;
+  bottom: 224px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 28px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  font: 13px monospace;
+  letter-spacing: 2px;
+  cursor: pointer;
+  z-index: 10;
+}
+#btn-play:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.face span {
+  position: absolute;
+  bottom: 4px;
+  left: 6px;
+  color: rgba(255, 200, 80, 0.7);
+  font: 11px monospace;
+}
